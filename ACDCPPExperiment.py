@@ -24,7 +24,7 @@ class ACDCPPExperiment():
         acdc_metric: Callable[[Tensor], Tensor],
         acdcpp_metric: Callable[[Tensor], Tensor],
         thresholds: List[float],
-        run_name: str,
+        # run_name: str,
         save_graphs_after: float,
         verbose: bool = False,
         attr_absolute_val: bool = True,
@@ -42,7 +42,7 @@ class ACDCPPExperiment():
         self.clean_data = clean_data
         self.corr_data = corr_data
 
-        self.run_name = run_name
+        # self.run_name = run_name
         self.verbose = verbose
         
         self.acdc_metric = acdc_metric
@@ -72,7 +72,7 @@ class ACDCPPExperiment():
         exp = TLACDCExperiment(
             model=self.model,
             threshold=threshold,
-            run_name=self.run_name,
+            # run_name=self.run_name,
             ds=self.clean_data,
             ref_ds=self.corr_data,
             metric=self.acdc_metric,
@@ -121,7 +121,7 @@ class ACDCPPExperiment():
         return (get_nodes(exp.corr), exp.num_passes)
 
     def run(self, save_after_acdcpp=True, save_after_acdc=True):
-        os.makedirs(f'ims/{self.run_name}', exist_ok=True)
+        os.makedirs(f'ims/abs_edges', exist_ok=True)
 
         pruned_heads = {}
         num_passes = {}
